@@ -14,7 +14,7 @@ import BOOK_05_JANAIZ from './books/book_05_janaiz';
 import BOOK_06_ZAKAH from './books/book_06_zakah';
 import BOOK_07_SIYAM from './books/book_07_siyam';
 import BOOK_08_HAJJ from './books/book_08_hajj';
-import BOOK_09_UDHIYAH from './books/book_09_udhiyah';
+import BOOK_09_UDHIYAH from './books/book_09_udhiya';
 
 // فقه الأسرة (categoryId: 2)
 import BOOK_10_NIKAH from './books/book_10_nikah';
