@@ -1,80 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Space+Grotesk:wght@300;400;700&display=swap');
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&display=swap');
 
 @theme {
-  --font-sans: "Almarai", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-islamic: "Amiri", serif;
+  --font-kufi: "Reem Kufi", sans-serif;
+  --color-emerald-50: #f0fdf4;
+  --color-emerald-100: #dcfce7;
+  --color-emerald-200: #bbf7d0;
+  --color-emerald-500: #22c55e;
+  --color-emerald-600: #16a34a;
+  --color-emerald-700: #15803d;
+  --color-emerald-800: #166534;
+  --color-emerald-900: #14532d;
   
-  --color-brand-primary: #58CC02;
-  --color-brand-secondary: #1CB0F6;
-  --color-brand-accent: #FFC800;
-  --color-brand-danger: #FF4B4B;
-  --color-brand-correct: #58CC02;
-  --color-brand-incorrect: #EA2B2B;
+  --shadow-duo: 0 4px 0 0 rgba(0, 0, 0, 0.2);
+  --shadow-emerald-duo: 0 4px 0 0 #166534;
+  --shadow-rose-duo: 0 4px 0 0 #9f1239;
 }
 
 @layer base {
   body {
-    @apply bg-white text-gray-900 overflow-x-hidden;
-    font-family: var(--font-sans);
+    @apply font-sans m-0 p-0 overflow-x-hidden bg-white text-slate-800;
+    direction: rtl;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
-.brutalist-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 2rem;
-  margin-bottom: 0.5rem;
-  margin-right: 0.5rem;
-  overflow: hidden;
-  font-weight: 800;
-  border-radius: 1rem;
-  transition: all 0.3s ease-out;
-  border-width: 2px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+@layer components {
+  .duo-button {
+    @apply relative border-b-4 active:border-b-0 active:translate-y-[4px] transition-all duration-75 select-none;
+  }
+  
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-md border border-slate-200 shadow-sm;
+  }
+
+  .path-node {
+    @apply relative flex flex-col items-center justify-center transition-transform hover:scale-110 active:scale-95;
+  }
+
+  .unit-header {
+    @apply w-full py-6 px-8 rounded-3xl mb-12 shadow-lg text-white flex flex-col gap-1 relative overflow-hidden;
+  }
 }
 
-.brutalist-button-primary {
-  background-color: var(--color-brand-primary);
-  border-color: #16a34a;
-  color: white;
-  box-shadow: 0 4px 0 0 rgba(22, 163, 74, 1);
+:root {
+  --leading-arabic: 1.8;
 }
 
-.brutalist-button-primary:active {
-  transform: translateY(4px);
-  box-shadow: none;
-}
-
-.brutalist-button-secondary {
-  background-color: white;
-  border-color: #e5e7eb;
-  color: #6b7280;
-  box-shadow: 0 4px 0 0 rgba(229, 231, 235, 1);
-}
-
-.brutalist-button-secondary:hover {
-  background-color: #f9fafb;
-}
-
-.brutalist-button-secondary:active {
-  transform: translateY(4px);
-  box-shadow: none;
-}
-
-.option-card {
-  @apply relative p-4 mb-4 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all duration-200 hover:bg-gray-50 hover:border-brand-secondary active:scale-[0.98];
-}
-
-.option-card-selected {
-  @apply border-brand-secondary bg-blue-50 text-brand-secondary;
-}
-
-.option-card-correct {
-  @apply border-brand-correct bg-green-50 text-brand-correct;
-}
-
-.option-card-incorrect {
-  @apply border-brand-danger bg-red-50 text-brand-danger;
-}
