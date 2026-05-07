@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "App user profile",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "xp": { "type": "number" },
+        "streak": { "type": "number" },
+        "avatar": { "type": "string" },
+        "lastActive": { "type": "string", "format": "date-time" }
+      },
+      "required": ["displayName", "xp", "streak"]
+    },
+    "Challenge": {
+      "title": "Challenge",
+      "description": "Group challenge room",
+      "type": "object",
+      "properties": {
+        "bookId": { "type": "string" },
+        "sectionId": { "type": "string" },
+        "status": { "type": "string", "enum": ["open", "active", "finished"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "creatorId": { "type": "string" },
+        "bookTitle": { "type": "string" },
+        "sectionTitle": { "type": "string" }
+      },
+      "required": ["bookId", "sectionId", "status", "createdAt", "creatorId"]
+    },
+    "Participant": {
+      "title": "Participant",
+      "description": "Challenge participant score",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "score": { "type": "number" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "joinedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["displayName", "score", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "challenges/{challengeId}": {
+      "schema": "Challenge",
+      "description": "Challenge metadata"
+    },
+    "challenges/{challengeId}/participants/{participantId}": {
+      "schema": "Participant",
+      "description": "Individual scores within a challenge"
+    }
+  }
+}
