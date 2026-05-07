@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Space+Grotesk:wght@300;400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Almarai", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --color-brand-primary: #58CC02;
+  --color-brand-secondary: #1CB0F6;
+  --color-brand-accent: #FFC800;
+  --color-brand-danger: #FF4B4B;
+  --color-brand-correct: #58CC02;
+  --color-brand-incorrect: #EA2B2B;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900 overflow-x-hidden;
+    font-family: var(--font-sans);
+  }
+}
+
+.brutalist-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  overflow: hidden;
+  font-weight: 800;
+  border-radius: 1rem;
+  transition: all 0.3s ease-out;
+  border-width: 2px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.brutalist-button-primary {
+  background-color: var(--color-brand-primary);
+  border-color: #16a34a;
+  color: white;
+  box-shadow: 0 4px 0 0 rgba(22, 163, 74, 1);
+}
+
+.brutalist-button-primary:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+.brutalist-button-secondary {
+  background-color: white;
+  border-color: #e5e7eb;
+  color: #6b7280;
+  box-shadow: 0 4px 0 0 rgba(229, 231, 235, 1);
+}
+
+.brutalist-button-secondary:hover {
+  background-color: #f9fafb;
+}
+
+.brutalist-button-secondary:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+.option-card {
+  @apply relative p-4 mb-4 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all duration-200 hover:bg-gray-50 hover:border-brand-secondary active:scale-[0.98];
+}
+
+.option-card-selected {
+  @apply border-brand-secondary bg-blue-50 text-brand-secondary;
+}
+
+.option-card-correct {
+  @apply border-brand-correct bg-green-50 text-brand-correct;
+}
+
+.option-card-incorrect {
+  @apply border-brand-danger bg-red-50 text-brand-danger;
+}

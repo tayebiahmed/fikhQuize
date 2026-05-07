@@ -1,0 +1,57 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-primary: #16a34a;
+    --brand-secondary: #1e88e5;
+    --brand-danger: #ea2b2b;
+    --brand-correct: #58cc02;
+    --brand-accent: #f5b042;
+  }
+
+  body {
+    font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+    background-color: #ffffff;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .option-card {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer utilities {
+  .text-brand-primary { color: var(--brand-primary); }
+  .text-brand-secondary { color: var(--brand-secondary); }
+  .text-brand-danger { color: var(--brand-danger); }
+  .text-brand-correct { color: var(--brand-correct); }
+  .text-brand-accent { color: var(--brand-accent); }
+  
+  .bg-brand-primary { background-color: var(--brand-primary); }
+  .bg-brand-secondary { background-color: var(--brand-secondary); }
+  .bg-brand-danger { background-color: var(--brand-danger); }
+  .bg-brand-correct { background-color: var(--brand-correct); }
+  .bg-brand-accent { background-color: var(--brand-accent); }
+  
+  .border-brand-primary { border-color: var(--brand-primary); }
+  .border-brand-secondary { border-color: var(--brand-secondary); }
+  .border-brand-danger { border-color: var(--brand-danger); }
+  .border-brand-correct { border-color: var(--brand-correct); }
+  .border-brand-accent { border-color: var(--brand-accent); }
+  
+  .fill-brand-danger { fill: var(--brand-danger); }
+}
