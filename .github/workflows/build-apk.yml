@@ -48,13 +48,19 @@ jobs:
         distribution: 'zulu'
         java-version: '21'
 
-    - name: Clean Gradle Cache
+    - name: Update Gradle Wrapper to 8.7
+      run: |
+        cd android
+        ./gradlew wrapper --gradle-version 8.7 --distribution-type bin
+        chmod +x gradlew
+
+    - name: Clean Gradle Cache and Project
       run: |
         rm -rf ~/.gradle/caches/
         rm -rf android/.gradle
+        rm -rf android/app/build
         cd android
-        chmod +x gradlew || true
-        ./gradlew clean || true
+        ./gradlew clean
 
     - name: Build Android APK
       run: |
