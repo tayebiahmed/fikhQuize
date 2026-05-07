@@ -18,7 +18,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '22'  # ✅ تم التغيير من 20 إلى 22
+        node-version: '22'
 
     - name: Install dependencies
       run: |
@@ -51,15 +51,11 @@ jobs:
     - name: Set up Android SDK
       uses: android-actions/setup-android@v3
 
-    - name: Install Android SDK Platforms
-      run: |
-        sdkmanager "platforms;android-35"
-
-    - name: Update Gradle Wrapper
+    - name: Force Gradle 8.13
       run: |
         cd android
+        echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip" > gradle/wrapper/gradle-wrapper.properties
         chmod +x gradlew
-        ./gradlew wrapper --gradle-version=8.7 --distribution-type=bin
 
     - name: Clean and Build APK
       run: |
