@@ -20,11 +20,16 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Install dependencies (regenerate lock file)
+    - name: Install dependencies
       run: |
         rm -f package-lock.json
         npm install
         npm ci
+
+    - name: Install Capacitor
+      run: |
+        npm install @capacitor/core @capacitor/cli @capacitor/android
+        npx cap init fikhQuize com.tayebiahmed.fikhquize --web-dir dist
 
     - name: Build web assets
       run: npm run build
@@ -43,7 +48,7 @@ jobs:
         rm -rf ~/.gradle/caches/
         rm -rf android/.gradle
         cd android
-        chmod +x gradlew
+        chmod +x gradlew || true
         ./gradlew clean || true
 
     - name: Build Android APK
