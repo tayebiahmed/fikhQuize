@@ -24,7 +24,7 @@ import BOOK_13_NAFAQAT from './books/book_13_nafaqat';
 import BOOK_14_HADANAH from './books/book_14_hadanah';
 
 // فقه المعاملات (categoryId: 3)
-import BOOK_15_BUYUU from './books/book_15_buyuu';
+import BOOK_15_BUYUU from './books/book_15_buyu';
 import BOOK_16_RIBA from './books/book_16_riba';
 import BOOK_17_RAHN from './books/book_17_rahn';
 import BOOK_18_SHARIKAH from './books/book_18_sharikah';
