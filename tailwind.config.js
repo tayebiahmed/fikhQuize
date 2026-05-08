@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -7,15 +8,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'arabic': ['Cairo', 'Amiri', 'Reem Kufi', 'system-ui', 'sans-serif'],
+        'arabic': ['Tajawal', 'system-ui', 'sans-serif'],
+        'amiri': ['Amiri', 'serif'],
       },
       colors: {
         brand: {
-          primary: '#10b981',
-          secondary: '#3b82f6',
-          danger: '#ef4444',
-          correct: '#10b981',
-          accent: '#f59e0b',
+          primary: '#16a34a',
+          secondary: '#1e88e5',
+          danger: '#ea2b2b',
+          correct: '#58cc02',
+          accent: '#f5b042',
         }
       },
       animation: {
