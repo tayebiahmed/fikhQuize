@@ -14,7 +14,7 @@ import BOOK_05_JANAIZ from './books/book_05_janaiz';
 import BOOK_06_ZAKAH from './books/book_06_zakah';
 import BOOK_07_SIYAM from './books/book_07_siyam';
 import BOOK_08_HAJJ from './books/book_08_hajj';
-import BOOK_09_UDHIYAH from './books/book_09_udhiya';  // تم التصحيح
+import BOOK_09_UDHIYAH from './books/book_09_udhiya';
 
 // فقه الأسرة (categoryId: 2)
 import BOOK_10_NIKAH from './books/book_10_nikah';
@@ -24,10 +24,10 @@ import BOOK_13_NAFAQAT from './books/book_13_nafaqat';
 import BOOK_14_HADANAH from './books/book_14_hadanah';
 
 // فقه المعاملات (categoryId: 3)
-import BOOK_15_BUYUU from './books/book_15_buyu';  // تم التصحيح
+import BOOK_15_BUYUU from './books/book_15_buyu';
 import BOOK_16_RIBA from './books/book_16_riba';
 import BOOK_17_RAHN from './books/book_17_rahn';
-import BOOK_18_SHARIKAH from './books/book_18_sharka';  // تم التصحيح
+import BOOK_18_SHARIKAH from './books/book_18_sharka';
 import BOOK_19_IJARAH from './books/book_19_ijarah';
 import BOOK_20_GHASB from './books/book_20_ghasb';
 import BOOK_21_WAQF from './books/book_21_waqf';
@@ -44,9 +44,9 @@ import BOOK_27_AKHLAQ from './books/book_27_akhlaq';
 import BOOK_28_ZUHD from './books/book_28_zuhd';
 
 // فقه النوازل (categoryId: 6)
-import BOOK_29_NAWAZIL_TIB from './books/book_29_nawazil_tibbiya';  // تم التصحيح
+import BOOK_29_NAWAZIL_TIB from './books/book_29_nawazil_tibbiya';
 import BOOK_30_NAWAZIL_MALIYA from './books/book_30_nawazil_maliya';
-import BOOK_31_NAWAZIL_ASR from './books/book_31_nawazil_muasira';  // تم التصحيح
+import BOOK_31_NAWAZIL_ASR from './books/book_31_nawazil_muasira';
 
 // أصول الفقه والمقاصد (categoryId: 7)
 import BOOK_32_USUL from './books/book_32_usul';
@@ -111,5 +111,27 @@ export const FIQH_DATABASE: Book[] = [
 // التصدير
 // =====================================================
 
-export { CATEGORIES } from '../types/fiqh.types';
+export const CATEGORIES: Category[] = [
+  {
+    id: 'ibadat',
+    name: 'فقه العبادات',
+    books: ['book_01', 'book_02', 'book_03', 'book_04', 'book_05', 'book_06', 'book_07', 'book_08', 'book_09']
+  },
+  {
+    id: 'family',
+    name: 'فقه الأسرة',
+    books: ['book_10', 'book_11', 'book_12', 'book_13', 'book_14']
+  },
+  {
+    id: 'muamalat',
+    name: 'فقه المعاملات',
+    books: ['book_15', 'book_16', 'book_17', 'book_18', 'book_19', 'book_20', 'book_21']
+  },
+  {
+    id: 'others',
+    name: 'أبواب متفرقة',
+    books: ['book_22', 'book_23', 'book_24', 'book_25', 'book_26', 'book_27', 'book_28', 'book_29', 'book_30', 'book_31', 'book_32', 'book_33', 'book_34']
+  }
+];
+
 export type { Book, Category, Section, Question, Source };
