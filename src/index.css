@@ -1,22 +1,51 @@
+@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-islamic: "Amiri", serif;
+  --font-kufi: "Reem Kufi", sans-serif;
+  --color-emerald-50: #f0fdf4;
+  --color-emerald-100: #dcfce7;
+  --color-emerald-200: #bbf7d0;
+  --color-emerald-500: #22c55e;
+  --color-emerald-600: #16a34a;
+  --color-emerald-700: #15803d;
+  --color-emerald-800: #166534;
+  --color-emerald-900: #14532d;
+  
+  --shadow-duo: 0 4px 0 0 rgba(0, 0, 0, 0.2);
+  --shadow-emerald-duo: 0 4px 0 0 #166534;
+  --shadow-rose-duo: 0 4px 0 0 #9f1239;
+}
 
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-900 overflow-x-hidden;
-    font-family: 'Cairo', 'Amiri', 'Reem Kufi', system-ui, sans-serif;
+    @apply font-sans m-0 p-0 overflow-x-hidden bg-white text-slate-800;
+    direction: rtl;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
 @layer components {
-  .quiz-option {
-    @apply transition-all duration-200 active:scale-95;
+  .duo-button {
+    @apply relative border-b-4 active:border-b-0 active:translate-y-[4px] transition-all duration-75 select-none;
   }
   
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-md border border-slate-200 shadow-sm;
+  }
+
   .path-node {
-    @apply transition-all duration-300 hover:scale-105;
+    @apply relative flex flex-col items-center justify-center transition-transform hover:scale-110 active:scale-95;
+  }
+
+  .unit-header {
+    @apply w-full py-6 px-8 rounded-3xl mb-12 shadow-lg text-white flex flex-col gap-1 relative overflow-hidden;
   }
 }
+
+:root {
+  --leading-arabic: 1.8;
+}
+
