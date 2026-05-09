@@ -24,7 +24,7 @@ import BOOK_13_NAFAQAT from './books/book_13_nafaqat';
 import BOOK_14_HADANAH from './books/book_14_hadanah';
 
 // فقه المعاملات (categoryId: 3)
-import BOOK_15_BUYUU from './books/book_15_buyu';
+import BOOK_15_BUYU from './books/book_15_buyu';
 import BOOK_16_RIBA from './books/book_16_riba';
 import BOOK_17_RAHN from './books/book_17_rahn';
 import BOOK_18_SHARIKAH from './books/book_18_sharka';
@@ -59,79 +59,61 @@ import BOOK_34_QAWAID from './books/book_34_qawaid';
 
 export const FIQH_DATABASE: Book[] = [
   // فقه العبادات (1-9)
-  BOOK_01_TAHARA,
-  BOOK_02_SALAH,
-  BOOK_03_JAMAAH,
-  BOOK_04_KHAWF,
-  BOOK_05_JANAIZ,
-  BOOK_06_ZAKAH,
-  BOOK_07_SIYAM,
-  BOOK_08_HAJJ,
-  BOOK_09_UDHIYAH,
+  { ...BOOK_01_TAHARA, categoryId: 1 },
+  { ...BOOK_02_SALAH, categoryId: 1 },
+  { ...BOOK_03_JAMAAH, categoryId: 1 },
+  { ...BOOK_04_KHAWF, categoryId: 1 },
+  { ...BOOK_05_JANAIZ, categoryId: 1 },
+  { ...BOOK_06_ZAKAH, categoryId: 1 },
+  { ...BOOK_07_SIYAM, categoryId: 1 },
+  { ...BOOK_08_HAJJ, categoryId: 1 },
+  { ...BOOK_09_UDHIYAH, categoryId: 1 },
   
   // فقه الأسرة (10-14)
-  BOOK_10_NIKAH,
-  BOOK_11_TALAQ,
-  BOOK_12_RADA,
-  BOOK_13_NAFAQAT,
-  BOOK_14_HADANAH,
+  { ...BOOK_10_NIKAH, categoryId: 2 },
+  { ...BOOK_11_TALAQ, categoryId: 2 },
+  { ...BOOK_12_RADA, categoryId: 2 },
+  { ...BOOK_13_NAFAQAT, categoryId: 2 },
+  { ...BOOK_14_HADANAH, categoryId: 2 },
   
   // فقه المعاملات (15-21)
-  BOOK_15_BUYUU,
-  BOOK_16_RIBA,
-  BOOK_17_RAHN,
-  BOOK_18_SHARIKAH,
-  BOOK_19_IJARAH,
-  BOOK_20_GHASB,
-  BOOK_21_WAQF,
+  { ...BOOK_15_BUYU, categoryId: 3 },
+  { ...BOOK_16_RIBA, categoryId: 3 },
+  { ...BOOK_17_RAHN, categoryId: 3 },
+  { ...BOOK_18_SHARIKAH, categoryId: 3 },
+  { ...BOOK_19_IJARAH, categoryId: 3 },
+  { ...BOOK_20_GHASB, categoryId: 3 },
+  { ...BOOK_21_WAQF, categoryId: 3 },
   
   // فقه الجنايات (22-25)
-  BOOK_22_JIHAD,
-  BOOK_23_HUDUD,
-  BOOK_24_QISAS,
-  BOOK_25_QADA,
+  { ...BOOK_22_JIHAD, categoryId: 4 },
+  { ...BOOK_23_HUDUD, categoryId: 4 },
+  { ...BOOK_24_QISAS, categoryId: 4 },
+  { ...BOOK_25_QADA, categoryId: 4 },
   
   // فقه الآداب (26-28)
-  BOOK_26_ADAB,
-  BOOK_27_AKHLAQ,
-  BOOK_28_ZUHD,
+  { ...BOOK_26_ADAB, categoryId: 5 },
+  { ...BOOK_27_AKHLAQ, categoryId: 5 },
+  { ...BOOK_28_ZUHD, categoryId: 5 },
   
   // فقه النوازل (29-31)
-  BOOK_29_NAWAZIL_TIB,
-  BOOK_30_NAWAZIL_MALIYA,
-  BOOK_31_NAWAZIL_ASR,
+  { ...BOOK_29_NAWAZIL_TIB, categoryId: 6 },
+  { ...BOOK_30_NAWAZIL_MALIYA, categoryId: 6 },
+  { ...BOOK_31_NAWAZIL_ASR, categoryId: 6 },
   
   // أصول الفقه والمقاصد (32-34)
-  BOOK_32_USUL,
-  BOOK_33_MAQASID,
-  BOOK_34_QAWAID,
-];
+  { ...BOOK_32_USUL, categoryId: 7 },
+  { ...BOOK_33_MAQASID, categoryId: 7 },
+  { ...BOOK_34_QAWAID, categoryId: 7 },
+].map(book => ({
+  ...book,
+  badge: book.badge || 'باحث',
+  description: book.description || `دراسة علمية لـ ${book.title} وفق المذهب المالكي.`
+}));
 
 // =====================================================
 // التصدير
 // =====================================================
 
-export const CATEGORIES: Category[] = [
-  {
-    id: 'ibadat',
-    name: 'فقه العبادات',
-    books: ['book_01', 'book_02', 'book_03', 'book_04', 'book_05', 'book_06', 'book_07', 'book_08', 'book_09']
-  },
-  {
-    id: 'family',
-    name: 'فقه الأسرة',
-    books: ['book_10', 'book_11', 'book_12', 'book_13', 'book_14']
-  },
-  {
-    id: 'muamalat',
-    name: 'فقه المعاملات',
-    books: ['book_15', 'book_16', 'book_17', 'book_18', 'book_19', 'book_20', 'book_21']
-  },
-  {
-    id: 'others',
-    name: 'أبواب متفرقة',
-    books: ['book_22', 'book_23', 'book_24', 'book_25', 'book_26', 'book_27', 'book_28', 'book_29', 'book_30', 'book_31', 'book_32', 'book_33', 'book_34']
-  }
-];
-
+export { CATEGORIES } from '../types/fiqh.types';
 export type { Book, Category, Section, Question, Source };
