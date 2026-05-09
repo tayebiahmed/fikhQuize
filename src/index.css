@@ -1,51 +1,51 @@
-@import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&display=swap');
-
-@theme {
-  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
-  --font-islamic: "Amiri", serif;
-  --font-kufi: "Reem Kufi", sans-serif;
-  --color-emerald-50: #f0fdf4;
-  --color-emerald-100: #dcfce7;
-  --color-emerald-200: #bbf7d0;
-  --color-emerald-500: #22c55e;
-  --color-emerald-600: #16a34a;
-  --color-emerald-700: #15803d;
-  --color-emerald-800: #166534;
-  --color-emerald-900: #14532d;
-  
-  --shadow-duo: 0 4px 0 0 rgba(0, 0, 0, 0.2);
-  --shadow-emerald-duo: 0 4px 0 0 #166534;
-  --shadow-rose-duo: 0 4px 0 0 #9f1239;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   body {
-    @apply font-sans m-0 p-0 overflow-x-hidden bg-white text-slate-800;
     direction: rtl;
-    -webkit-tap-highlight-color: transparent;
+    font-family: 'Cairo', 'Segoe UI', system-ui, sans-serif;
+  }
+  
+  /* تخصيص شريط التمرير */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
   }
 }
 
 @layer components {
-  .duo-button {
-    @apply relative border-b-4 active:border-b-0 active:translate-y-[4px] transition-all duration-75 select-none;
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
   }
   
-  .glass-card {
-    @apply bg-white/90 backdrop-blur-md border border-slate-200 shadow-sm;
-  }
-
-  .path-node {
-    @apply relative flex flex-col items-center justify-center transition-transform hover:scale-110 active:scale-95;
-  }
-
-  .unit-header {
-    @apply w-full py-6 px-8 rounded-3xl mb-12 shadow-lg text-white flex flex-col gap-1 relative overflow-hidden;
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
   }
 }
 
-:root {
-  --leading-arabic: 1.8;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
