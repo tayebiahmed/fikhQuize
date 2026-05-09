@@ -1,4 +1,5 @@
 // src/data/fiqhData.ts
+
 import type { Book, Category, Question, Section, Source } from '../types/fiqh.types';
 
 // =====================================================
