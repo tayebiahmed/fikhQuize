@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { BookOpen, ChevronLeft, ChevronRight, Home, Layers, Trophy, Sparkles, Brain, AlertCircle } from 'lucide-react';
-import { FIQH_DATABASE, CATEGORIES, Book, Section } from './data/fiqhDatabase';
+import { BookOpen, ChevronLeft, ChevronRight, Trophy, Sparkles, Brain } from 'lucide-react';
+import { FIQH_DATABASE, CATEGORIES } from './data';
+import type { Book, Section } from './types/fiqh.types';
 
 function App() {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number>(1);
@@ -11,7 +12,6 @@ function App() {
   const [showResults, setShowResults] = useState(false);
   const [score, setScore] = useState(0);
 
-  const currentCategory = CATEGORIES.find(c => c.id === selectedCategoryId);
   const currentBooks = FIQH_DATABASE.filter(book => book.categoryId === selectedCategoryId);
   
   const currentQuestions = selectedSection?.questions || [];
@@ -94,11 +94,9 @@ function App() {
       return (
         <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 py-12 px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden animate-fade-in">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-6 text-white text-center">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-4">
-                  <Trophy className="w-10 h-10 text-yellow-300" />
-                </div>
+                <Trophy className="w-16 h-16 mx-auto mb-4 text-yellow-300" />
                 <h2 className="text-3xl font-bold">نتيجة الاختبار</h2>
                 <p className="text-emerald-100 mt-2">{selectedSection.title}</p>
               </div>
@@ -118,10 +116,10 @@ function App() {
                   />
                 </div>
                 
-                <div className="flex gap-4 justify-center flex-wrap">
+                <div className="flex gap-4 justify-center">
                   <button
                     onClick={handleRestart}
-                    className="px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-all shadow-md hover:shadow-lg"
+                    className="px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-all"
                   >
                     إعادة المحاولة
                   </button>
@@ -142,13 +140,11 @@ function App() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 py-8 px-4">
         <div className="max-w-3xl mx-auto">
-          {/* رأس الصفحة */}
           <div className="bg-white rounded-xl shadow-lg p-4 mb-6 flex justify-between items-center">
             <div className="flex items-center gap-3">
               <button
                 onClick={handleBackToSections}
                 className="p-2 hover:bg-gray-100 rounded-lg transition-all"
-                aria-label="رجوع"
               >
                 <ChevronRight className="w-5 h-5 text-gray-600" />
               </button>
@@ -157,17 +153,14 @@ function App() {
                 <div className="text-lg font-bold text-gray-800">{selectedSection.title}</div>
               </div>
             </div>
-            <div className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-              س {currentQuestionIndex + 1} / {currentQuestions.length}
+            <div className="text-sm text-gray-500">
+              السؤال {currentQuestionIndex + 1} من {currentQuestions.length}
             </div>
           </div>
           
-          {/* بطاقة السؤال */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-6 animate-fade-in">
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
             <div className="flex items-start gap-3 mb-6">
-              <div className="p-2 bg-emerald-100 rounded-lg">
-                <Brain className="w-5 h-5 text-emerald-600" />
-              </div>
+              <Brain className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" />
               <h3 className="text-xl font-semibold text-gray-800 leading-relaxed">
                 {currentQuestion?.text}
               </h3>
@@ -177,7 +170,7 @@ function App() {
               {currentQuestion?.options.map((option, idx) => {
                 const isSelected = selectedAnswer === idx;
                 const isCorrect = currentQuestion.correctIndex === idx;
-                let buttonClass = "w-full text-right p-4 rounded-xl border-2 transition-all hover:scale-[1.02] flex items-start gap-3";
+                let buttonClass = "w-full text-right p-4 rounded-xl border-2 transition-all";
                 
                 if (isSelected) {
                   buttonClass += isCorrect 
@@ -196,21 +189,18 @@ function App() {
                     className={buttonClass}
                     disabled={isAnswered}
                   >
-                    <span className="font-bold text-lg min-w-[30px]">{String.fromCharCode(65 + idx)}.</span>
-                    <span className="flex-1">{option}</span>
+                    <span className="font-medium">{String.fromCharCode(65 + idx)}. </span>
+                    {option}
                   </button>
                 );
               })}
             </div>
           </div>
           
-          {/* الشرح */}
           {isAnswered && (
-            <div className="bg-blue-50 rounded-xl p-4 mb-6 border-r-4 border-blue-500 animate-fade-in">
-              <div className="flex items-start gap-3">
-                <div className="p-1 bg-blue-100 rounded-full">
-                  <Sparkles className="w-4 h-4 text-blue-600" />
-                </div>
+            <div className="bg-blue-50 rounded-xl p-4 mb-6 border-r-4 border-blue-500">
+              <div className="flex items-start gap-2">
+                <Sparkles className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="font-semibold text-blue-800 mb-1">📖 الفائدة الفقهية:</div>
                   <p className="text-blue-700 text-sm leading-relaxed">{currentQuestion?.explanation}</p>
@@ -219,12 +209,11 @@ function App() {
             </div>
           )}
           
-          {/* أزرار التنقل */}
           <div className="flex justify-between gap-4">
             <button
               onClick={handlePrevious}
               disabled={currentQuestionIndex === 0}
-              className="flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-700 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300 transition-all shadow-md"
+              className="flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-700 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300 transition-all"
             >
               <ChevronRight className="w-5 h-5" />
               السابق
@@ -233,7 +222,7 @@ function App() {
             <button
               onClick={handleNext}
               disabled={!isAnswered}
-              className="flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-emerald-700 transition-all shadow-md"
+              className="flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-emerald-700 transition-all"
             >
               {currentQuestionIndex + 1 === currentQuestions.length ? 'إنهاء' : 'التالي'}
               <ChevronLeft className="w-5 h-5" />
@@ -244,19 +233,8 @@ function App() {
     );
   }
   
-  // واجهة اختيار الكتاب والقسم
+  // واجهة اختيار الكتاب
   if (selectedBook) {
-    const sectionColors = [
-      'from-blue-500 to-cyan-500',
-      'from-purple-500 to-pink-500',
-      'from-orange-500 to-red-500',
-      'from-green-500 to-emerald-500',
-      'from-indigo-500 to-blue-500',
-      'from-rose-500 to-red-500',
-      'from-teal-500 to-green-500',
-      'from-amber-500 to-orange-500',
-    ];
-    
     return (
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 py-12 px-4">
         <div className="max-w-6xl mx-auto">
@@ -274,8 +252,14 @@ function App() {
             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {selectedBook.sections.map((section, idx) => {
+              const sectionColors = [
+                'from-blue-500 to-cyan-500',
+                'from-purple-500 to-pink-500',
+                'from-orange-500 to-red-500',
+                'from-green-500 to-emerald-500',
+              ];
               const colorIndex = idx % sectionColors.length;
               
               return (
@@ -286,9 +270,7 @@ function App() {
                 >
                   <div className={`bg-gradient-to-r ${sectionColors[colorIndex]} p-4 text-white`}>
                     <div className="flex justify-between items-center">
-                      <div className="p-2 bg-white/20 rounded-lg">
-                        <BookOpen className="w-5 h-5" />
-                      </div>
+                      <BookOpen className="w-8 h-8 opacity-80" />
                       <span className="text-sm bg-white/20 px-2 py-1 rounded-full">
                         {section.questions.length} سؤال
                       </span>
@@ -309,23 +291,19 @@ function App() {
     );
   }
   
-  // الواجهة الرئيسية - اختيار الفئة والكتاب
+  // الواجهة الرئيسية
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 py-12 px-4">
       <div className="max-w-6xl mx-auto">
-        {/* الهيدر */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg mb-6">
-            <div className="p-1 bg-emerald-100 rounded-full">
-              <BookOpen className="w-5 h-5 text-emerald-600" />
-            </div>
+            <BookOpen className="w-6 h-6 text-emerald-600" />
             <span className="text-emerald-800 font-medium">بنك الأسئلة الفقهية</span>
           </div>
           <h1 className="text-4xl font-bold text-gray-800 mb-4">📚 اختبر معرفتك الفقهية</h1>
           <p className="text-gray-600 text-lg">اختر الفئة ثم الكتاب الذي تريد الاختبار فيه</p>
         </div>
         
-        {/* أزرار الفئات */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {CATEGORIES.map(category => {
             const isActive = selectedCategoryId === category.id;
@@ -336,7 +314,7 @@ function App() {
                 className={`px-6 py-3 rounded-xl font-medium transition-all ${
                   isActive 
                     ? 'bg-emerald-600 text-white shadow-lg scale-105' 
-                    : 'bg-white text-gray-700 hover:bg-emerald-50 hover:scale-105 shadow-md'
+                    : 'bg-white text-gray-700 hover:bg-emerald-50 hover:scale-105'
                 }`}
               >
                 <span className="ml-2">{category.icon}</span>
@@ -346,7 +324,6 @@ function App() {
           })}
         </div>
         
-        {/* بطاقات الكتب */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentBooks.map((book) => (
             <button
