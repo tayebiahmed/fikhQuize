@@ -1,9 +1,8 @@
 // src/data/fiqhData.ts
-
 import type { Book, Category, Question, Section, Source } from '../types/fiqh.types';
 
 // =====================================================
-// استيراد جميع الكتب (بأسماء الملفات الفعلية)
+// استيراد جميع الكتب (بأسماء الملفات الصحيحة)
 // =====================================================
 
 // فقه العبادات (categoryId: 1)
@@ -15,7 +14,7 @@ import BOOK_05_JANAIZ from './books/book_05_janaiz';
 import BOOK_06_ZAKAH from './books/book_06_zakah';
 import BOOK_07_SIYAM from './books/book_07_siyam';
 import BOOK_08_HAJJ from './books/book_08_hajj';
-import BOOK_09_UDHIYAH from './books/book_09_udhiya';
+import BOOK_09_UDHIYAH from './books/book_09_udhiya';      // ✅ مصحح
 
 // فقه الأسرة (categoryId: 2)
 import BOOK_10_NIKAH from './books/book_10_nikah';
@@ -25,10 +24,10 @@ import BOOK_13_NAFAQAT from './books/book_13_nafaqat';
 import BOOK_14_HADANAH from './books/book_14_hadanah';
 
 // فقه المعاملات (categoryId: 3)
-import BOOK_15_BUYU from './books/book_15_buyu';
+import BOOK_15_BUYUU from './books/book_15_buyu';          // ✅ مصحح
 import BOOK_16_RIBA from './books/book_16_riba';
 import BOOK_17_RAHN from './books/book_17_rahn';
-import BOOK_18_SHARIKAH from './books/book_18_sharka';
+import BOOK_18_SHARIKAH from './books/book_18_sharka';     // ✅ مصحح
 import BOOK_19_IJARAH from './books/book_19_ijarah';
 import BOOK_20_GHASB from './books/book_20_ghasb';
 import BOOK_21_WAQF from './books/book_21_waqf';
@@ -45,9 +44,9 @@ import BOOK_27_AKHLAQ from './books/book_27_akhlaq';
 import BOOK_28_ZUHD from './books/book_28_zuhd';
 
 // فقه النوازل (categoryId: 6)
-import BOOK_29_NAWAZIL_TIB from './books/book_29_nawazil_tibbiya';
+import BOOK_29_NAWAZIL_TIB from './books/book_29_nawazil_tibbiya';   // ✅ مصحح
 import BOOK_30_NAWAZIL_MALIYA from './books/book_30_nawazil_maliya';
-import BOOK_31_NAWAZIL_ASR from './books/book_31_nawazil_muasira';
+import BOOK_31_NAWAZIL_ASR from './books/book_31_nawazil_muasira';    // ✅ مصحح
 
 // أصول الفقه والمقاصد (categoryId: 7)
 import BOOK_32_USUL from './books/book_32_usul';
@@ -60,57 +59,53 @@ import BOOK_34_QAWAID from './books/book_34_qawaid';
 
 export const FIQH_DATABASE: Book[] = [
   // فقه العبادات (1-9)
-  { ...BOOK_01_TAHARA, categoryId: 1 },
-  { ...BOOK_02_SALAH, categoryId: 1 },
-  { ...BOOK_03_JAMAAH, categoryId: 1 },
-  { ...BOOK_04_KHAWF, categoryId: 1 },
-  { ...BOOK_05_JANAIZ, categoryId: 1 },
-  { ...BOOK_06_ZAKAH, categoryId: 1 },
-  { ...BOOK_07_SIYAM, categoryId: 1 },
-  { ...BOOK_08_HAJJ, categoryId: 1 },
-  { ...BOOK_09_UDHIYAH, categoryId: 1 },
+  BOOK_01_TAHARA,
+  BOOK_02_SALAH,
+  BOOK_03_JAMAAH,
+  BOOK_04_KHAWF,
+  BOOK_05_JANAIZ,
+  BOOK_06_ZAKAH,
+  BOOK_07_SIYAM,
+  BOOK_08_HAJJ,
+  BOOK_09_UDHIYAH,
   
   // فقه الأسرة (10-14)
-  { ...BOOK_10_NIKAH, categoryId: 2 },
-  { ...BOOK_11_TALAQ, categoryId: 2 },
-  { ...BOOK_12_RADA, categoryId: 2 },
-  { ...BOOK_13_NAFAQAT, categoryId: 2 },
-  { ...BOOK_14_HADANAH, categoryId: 2 },
+  BOOK_10_NIKAH,
+  BOOK_11_TALAQ,
+  BOOK_12_RADA,
+  BOOK_13_NAFAQAT,
+  BOOK_14_HADANAH,
   
   // فقه المعاملات (15-21)
-  { ...BOOK_15_BUYU, categoryId: 3 },
-  { ...BOOK_16_RIBA, categoryId: 3 },
-  { ...BOOK_17_RAHN, categoryId: 3 },
-  { ...BOOK_18_SHARIKAH, categoryId: 3 },
-  { ...BOOK_19_IJARAH, categoryId: 3 },
-  { ...BOOK_20_GHASB, categoryId: 3 },
-  { ...BOOK_21_WAQF, categoryId: 3 },
+  BOOK_15_BUYUU,
+  BOOK_16_RIBA,
+  BOOK_17_RAHN,
+  BOOK_18_SHARIKAH,
+  BOOK_19_IJARAH,
+  BOOK_20_GHASB,
+  BOOK_21_WAQF,
   
   // فقه الجنايات (22-25)
-  { ...BOOK_22_JIHAD, categoryId: 4 },
-  { ...BOOK_23_HUDUD, categoryId: 4 },
-  { ...BOOK_24_QISAS, categoryId: 4 },
-  { ...BOOK_25_QADA, categoryId: 4 },
+  BOOK_22_JIHAD,
+  BOOK_23_HUDUD,
+  BOOK_24_QISAS,
+  BOOK_25_QADA,
   
   // فقه الآداب (26-28)
-  { ...BOOK_26_ADAB, categoryId: 5 },
-  { ...BOOK_27_AKHLAQ, categoryId: 5 },
-  { ...BOOK_28_ZUHD, categoryId: 5 },
+  BOOK_26_ADAB,
+  BOOK_27_AKHLAQ,
+  BOOK_28_ZUHD,
   
   // فقه النوازل (29-31)
-  { ...BOOK_29_NAWAZIL_TIB, categoryId: 6 },
-  { ...BOOK_30_NAWAZIL_MALIYA, categoryId: 6 },
-  { ...BOOK_31_NAWAZIL_ASR, categoryId: 6 },
+  BOOK_29_NAWAZIL_TIB,
+  BOOK_30_NAWAZIL_MALIYA,
+  BOOK_31_NAWAZIL_ASR,
   
   // أصول الفقه والمقاصد (32-34)
-  { ...BOOK_32_USUL, categoryId: 7 },
-  { ...BOOK_33_MAQASID, categoryId: 7 },
-  { ...BOOK_34_QAWAID, categoryId: 7 },
-].map(book => ({
-  ...book,
-  badge: book.badge || 'باحث',
-  description: book.description || `دراسة علمية لـ ${book.title} وفق المذهب المالكي.`
-}));
+  BOOK_32_USUL,
+  BOOK_33_MAQASID,
+  BOOK_34_QAWAID,
+];
 
 // =====================================================
 // التصدير
